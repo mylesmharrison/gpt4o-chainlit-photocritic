@@ -1,0 +1,7 @@
+.watermark {
+  display: none !important;
+}
+
+a[href*='https://github.com/Chainlit/chainlit'] {
+  visibility: hidden !important;
+}
