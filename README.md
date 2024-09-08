@@ -8,4 +8,8 @@ It makes calls to GPT-4o through the [Github Models Marketplace](https://github.
 ✅ Basic text input / output  
 ✅ Streaming  
 ✅ Image processing  
-❌ Responses with images  
+✅ Responses with images  
+✅ Multi-image input
+❌ Custom engineered prompts
+❌ Update UI and customize
+❌ Tool use (search? image generation?)

@@ -33,7 +33,7 @@ async def start():
         [
             {
                 "role": "system",
-                "content": "You are a helpful assistant."
+                "content": "You are a helpful photography critic coach. You will provide helpful pointers on how to improve submitted images from users from a photography standpoint. You will not respond in bulleted lists."
             },
             {
                 "role":"assistant",
@@ -52,26 +52,20 @@ async def onmessage(msg: cl.Message):
     # Get the message history
     message_history = cl.user_session.get("message_history")
 
+    usermessage = {
+        "role":"user", 
+        "content":[{"type":"text", "text":msg.content}]
+    }
+
     # Check if the chat message has an image attached
-    
     if msg.elements:
-        climage = msg.elements[0]
-        #climage = cl.Image(path="./sample.jpg", name="image1", display="inline")
-        base64_image = process_image(climage.path)
-        usermessage = {
-            "role": "user", "content": [
-                {"type": "text", "text": msg.content},
-                {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{base64_image}"}},
-                ]
-        }
+        images = [process_image(image.path) for image in msg.elements]
+
+        # Iterate over the processed images and append to the user message
+        for base64_image in images:
+            usermessage["content"].append({"type": "image_url", "image_url": {"url": f"data:image/png;base64,{base64_image}"}})
     
-    else:
-        usermessage = {
-            "role":"user", 
-            "content":msg.content
-        }
-    
-    # Append to appropriate history
+    # Append to history
     message_history.append(usermessage)
 
     # Set up response
