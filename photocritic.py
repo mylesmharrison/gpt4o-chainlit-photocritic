@@ -58,13 +58,25 @@ async def onmessage(msg: cl.Message):
         climage = msg.elements[0]
         #climage = cl.Image(path="./sample.jpg", name="image1", display="inline")
         base64_image = process_image(climage.path)
+        usermessage = {
+            "role": "user", "content": [
+                {"type": "text", "text": msg.content},
+                {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{base64_image}"}},
+                ]
+        }
+    
+    else:
+        usermessage = {
+            "role":"user", 
+            "content":msg.content
+        }
     
     # Append to appropriate history
-    message_history.append({"role": "user", "content": msg.content})
+    message_history.append(usermessage)
 
     # Set up response
     response_msg = cl.Message(content="") 
-    stream = None\
+    stream = None
 
     stream = await client.chat.completions.create(
         model="gpt-4o-mini",
