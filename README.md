@@ -34,7 +34,7 @@ chainlit run photocritic.py
 
 If you'd prefer not to use Github marketplace, you can remove the `base_url` and `api_key` arguments in `photocritic.py` to fall back to using an OpenAI account (and incurring charges w GPT-4o(-mini)).
 
-**Functionalities:** 
+**Functionalities:**   
 ✅ Basic text input / output  
 ✅ Streaming  
 ✅ Image processing  
