@@ -4,9 +4,7 @@ This is a simple [Chainlit](https://chainlit.io/) app to demonstrate the multi-m
 
 It makes calls to GPT-4o through the [Github Models Marketplace](https://github.com/marketplace/models), currently in beta.
 
-<video controls>
-  <source src="assets/gpt-4o-photocritic.mp4" type="video/mp4">
-</video>
+https://github.com/mylesmharrison/gpt4o-chainlit-photocritic/raw/master/assets/gpt-4o-photocritic.mp4
 
 ### Usage
 
